@@ -1,0 +1,507 @@
+package VehicleProject;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class Vehicle {     
+
+  public String brand; 
+  public double price;
+  public double mileage;
+  public double fuelTank;     
+  public String engine ; 
+  public String model;
+
+
+  public Vehicle(String brand, double price, double mileage, String model, double fuelTank, String engine) {
+    this.brand = brand;
+    this.price = price;
+    this.mileage = mileage;
+    this.fuelTank = fuelTank;
+    this.engine = engine; 
+    this.model = model; 
+  }
+  
+  public void printDetails() {
+    System.out.println("Manufacturer: " + brand);
+    System.out.println("Model: " + model );
+    System.out.println("Price: " + price + " Rupees");
+    System.out.println("Mileage: " + mileage + " Km/l");
+    System.out.println("Fuel Tank Capacity: " + fuelTank + " Litres");
+    System.out.println("Engine: " + engine);
+  }
+  
+}
+
+class Bike extends Vehicle {
+	
+	public double displacement;
+  public Bike(String brand, double price, double mileage, String model, double fuelTank, String engine,double displacement) {
+    super(brand, price, mileage, model, fuelTank, engine);
+    this.displacement = displacement;
+  }
+
+  public void bikeDetails() {
+    printDetails();
+    System.out.println("DIsplacement: " + displacement + "cc");
+  }
+
+}
+
+class Car extends Vehicle {       
+	
+      public String bodyStyle;
+
+      public Car(String brand, double price, double mileage, String model, double fuelTank, String engine, String bodyStyle) {
+        super(brand, price, mileage, model, fuelTank, engine);  
+        this.bodyStyle = bodyStyle;       
+      }
+
+      public void carDetails() {  
+        printDetails();         
+        System.out.println("Body Style: " + bodyStyle);
+      }
+  
+}
+
+class PetrolCar extends Car {
+
+      public PetrolCar(String brand, double price, double mileage, String model, double fuelTank, String engine, String bodyStyle) {
+        super(brand, price, mileage, model, fuelTank, engine, bodyStyle);
+    
+      }
+
+      public void petrolCarDetails() {
+        carDetails();
+        System.out.println("Fuel Type: Petrol");
+      } 
+  
+}
+
+class DieselCar extends Car {
+
+  public DieselCar(String brand, double price, double mileage, String model, double fuelTank, String engine, String bodyStyle) {
+    super(brand, price, mileage, model, fuelTank, engine, bodyStyle);
+       
+  }
+  
+  public void dieselCarDetails() {
+
+    carDetails();
+    System.out.println("Fuel Type : Diesel");
+  }
+}
+
+
+class Project {   
+
+  public static void main(String[] args) {
+	 
+	  try {
+	  Scanner sc = new Scanner(System.in);
+	  
+	  System.out.println("Select Type Of Vehicle");
+	  System.out.println("1. Two Wheeler");
+	  System.out.println("2. Three Wheeler");
+	  System.out.println("3. Four Wheeler");
+	  int a = sc.nextInt();
+	  switch (a) {
+	case 1://2 Wheeler
+		System.out.println("Select the Brand");
+		System.out.println("1. Royal Enfiels");
+		System.out.println("2. TVS");
+		System.out.println("3. Bajaj");
+		System.out.println("4. Hero");
+		System.out.println("**********************************************");
+		int b = sc.nextInt();
+		switch (b) {
+		case 1://Royal Enfield
+			System.out.println("Select the Bike");
+			System.out.println("1. Classic 350");
+			System.out.println("2. Himalayan");
+			System.out.println("3. Continental");
+		    System.out.println("**********************************************");
+            int c = sc.nextInt();
+             switch (c) {
+			case 1:
+				Bike classic = new Bike("Royal Enfield", 210000, 41.55, "Royal Enfield Classic 350", 13, "4 Stroke Single Cylinder", 349.34);
+				classic.bikeDetails();
+				break;
+			case 2:
+				Bike himalayan = new Bike("Royal Enfield", 260000, 34.04, "Royal Enfield Himalayan", 15, "4 Stroke Single Cylinder", 411);
+				himalayan.bikeDetails();
+				break;
+			case 3:
+				Bike continental = new Bike("Royal Enfield", 380000, 27, "Royal Enfield Continental GT", 13.7, "Parallel Twin 4 Stroke", 648);
+				continental.bikeDetails();
+				break;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+             break;
+		case 2://TVS
+			System.out.println("Select the Bike");
+			System.out.println("1. TVS Apache");
+			System.out.println("2. TVS Jupiter");
+			System.out.println("3. TVS Raider");
+			System.out.println("4. TVS Radeon");
+		    System.out.println("**********************************************");
+			int d = sc.nextInt();
+			switch (d) {
+			case 1:
+				Bike apache = new Bike("TVS", 110000, 45, "TVS Apache", 12, "4 Stroke Single Cylinder", 159.7);
+				apache.bikeDetails();
+				break;
+			case 2:
+				Bike jupiterBike = new Bike("TVS", 85000, 64, "TVS Jupiter", 6, "Single Cylinder 4 Stroke", 109.7);
+				jupiterBike.bikeDetails();
+				break;
+			case 3:
+				Bike raiderBike = new Bike("TVS", 110000, 67, "TVS Raider", 10, "Single Cylinder 4 Stroke", 124.8);
+				raiderBike.bikeDetails();
+				break;
+			case 4:
+				Bike radeonBike = new Bike("TVS", 1000000, 67, "TVS Radeon", 10, "4 Stroke Duralife Engine", 109.7);
+				radeonBike.bikeDetails();
+				break;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+			break;
+		case 3://Bajaj
+			System.out.println("Select the Bike");
+			System.out.println("1. Pulsar 120");
+			System.out.println("2. Platina 100");
+			System.out.println("3. Dominar 250");
+			System.out.println("4. Pulsar Ns 125");
+		    System.out.println("**********************************************");
+			int e = sc.nextInt();
+			switch (e) {
+			case 1:
+				Bike pulsarBike = new Bike("Bajaj", 120000, 50, "Bajaj Pulsar 150", 13, "4 Stroke DTS-i engine", 149.5);
+				pulsarBike.bikeDetails();
+				break;
+			case 2:
+				Bike platina = new Bike("Bajaj", 50000, 80, "Bajaj Platina 100", 11, "4 Stroke DTS-i engine", 102);
+				platina.bikeDetails();
+				break;
+			case 3:
+				Bike dominar = new Bike("Bajaj", 160000, 35.03, "Bajaj Dominar 250", 13, "Single Cylinder 4 Stroke", 248.77);
+				dominar.bikeDetails();
+				break;
+			case 4:
+				Bike nsBike = new Bike("Bajaj", 118000, 64.75, "Bajaj Pulsar Ns 125", 12, "4 Stroke DTS-i engine", 124.4);
+				nsBike.bikeDetails();
+				break;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+			break;
+		case 4://Hero
+			System.out.println("Select the Bike");
+			System.out.println("1. Hero Splendor Plus");
+			System.out.println("2. Hero Passion Pro");
+			System.out.println("3. Hero Glamour");
+			System.out.println("4. Hero Xpulse 200");
+		    System.out.println("**********************************************");
+			int f = sc.nextInt();
+			switch (f) {
+			case 1:
+				Bike splendorBike = new Bike("HEro", 78000, 80, "Hero Splendor Plis", 9.6, "4 Stroke Single Cylinder", 92.2);
+				splendorBike.bikeDetails();
+				break;
+			case 2:
+				Bike passionBike = new Bike("Hero", 84000, 80, "Hero Passion Pro", 10, "Air Cooled 4 Stroke", 113);
+				passionBike.bikeDetails();
+				break;
+			case 3:
+				Bike glamoBike = new Bike("Hero", 90000, 55, "Hero Glamour", 10, "Air COoled 4 Stroke", 124.7);
+				glamoBike.bikeDetails();
+				break;
+			case 4:
+				Bike xPpulseBike = new Bike("Hero", 140000, 45, "Hero Xpulse 200", 13, "4 Stroke 4 Valve Single Cylinder", 199.6);
+				xPpulseBike.bikeDetails();
+				break;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+		default:
+			System.out.println("Invalid Input");
+			break;
+		}
+		break;
+	case 2://3 Wheeler
+		System.out.println("Select The Vehicle");
+		System.out.println("1. Bajaj 3 Wheeler (AutoRickshaw)");
+		System.out.println("2. Piaggio Ape(Loading Truck) ");
+		System.out.println("3. Mahindra Alfa Plus");
+		int q = sc.nextInt();
+		switch (q) {
+			case 1:
+			PetrolCar auto = new PetrolCar("Bajaj", 227000, 40, "Bajaj RE Compact", 8, "BS-VI Engine", "Auto Rickshaw");
+			auto.petrolCarDetails();
+				break;
+			case 2:
+			PetrolCar ape = new PetrolCar("Piaggio", 265000, 40, "Piaggio Ape Xtra LDX", 40, "49.9 cc Petrol Engine","3 Wheeled Light Commercial Truck");
+			ape.petrolCarDetails();
+			   break;
+			case 3:
+			DieselCar alfa = new DieselCar("Mahindra", 270000, 30, "Mahindra Alfa Plus", 10.5, "Greaves Cotton,Single Cylinder Water Cooled Engine", "Light Commercial Truck");
+			alfa.dieselCarDetails();
+			break; 
+			default:
+			System.out.println("Invalid Input");
+				break;
+		}
+		break;
+	case 3://4 Wheeler
+		System.out.println("Select Type of Fuel");
+		System.out.println("1. Petrol");
+		System.out.println("2. Diesel");
+		System.out.println("**********************************************");
+		int g = sc.nextInt();
+		switch (g) {
+		case 1://petrol
+			System.out.println("Select The Brand");
+			System.out.println("1. Maruti");
+			System.out.println("2. Toyota");
+			System.out.println("3. Mercedes");
+			System.out.println("4. Renault");
+		    System.out.println("**********************************************");
+			int h = sc.nextInt();
+			switch (h) {
+			case 1://Maruti
+				System.out.println("Select The Car");
+				System.out.println("1. Maruti Ertiga");
+				System.out.println("2. Swift Dzire");
+				System.out.println("3. Maruti Ciaz");
+				System.out.println("4. Maruti Baleno");
+				System.out.println("**********************************************");
+				int i = sc.nextInt();
+				switch (i) {
+				case 1:
+					PetrolCar ertiga = new PetrolCar("Maruti", 910000, 18, "Maruti Ertiga", 45, "K-15 Smart Hybrid Engine", "5 Door Wagon");
+					ertiga.petrolCarDetails();
+					break;
+				case 2:
+					PetrolCar dZire = new PetrolCar("Maruti", 670000, 24, "Maruti Suzuki Swift Dzire", 37, "1.2L Petrol Engine", "Sedan");
+					dZire.petrolCarDetails();
+					break;
+				case 3:
+					PetrolCar ciaz = new PetrolCar("Maruti", 900000, 20, "Maruti Ciaz", 43, "K-15 Smart Hybrid Engine", "Sedan");
+					ciaz.petrolCarDetails();
+					break;
+				case 4:
+					PetrolCar baleno = new PetrolCar("Maruti", 700000, 19.56, "Maruti Baleno", 37, "1.2L VVT Engine", "HatchBack");
+					baleno.petrolCarDetails();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+			case 2://Toyota
+				System.out.println("Select The Car");
+				System.out.println("1. Toyota Urban Cruizer");
+				System.out.println("2. Toyota Innova Crysta");
+				System.out.println("3. Toyota Fortuner");
+				System.out.println("**********************************************");
+				int j = sc.nextInt();
+				switch (j) {
+				case 1:
+					PetrolCar cruizer = new PetrolCar("Toyota", 1000000, 18.76, "Toyota Urban Cruizer", 48, "K-Series 1.5L", "SUV");
+					cruizer.petrolCarDetails();
+					break;
+				case 2:
+					PetrolCar innovaCar = new PetrolCar("Toyota", 2200000, 12, "Toyota Innova Crysta", 55, "2.7L VVT Engine", "Mini Van");
+					innovaCar.petrolCarDetails();
+					break;
+				case 3:
+					PetrolCar fortunerCar = new PetrolCar("Toyota", 3600000, 8, "Toyota Fortuner", 80, "2.7L Petrol Engine", "SUV");
+					fortunerCar.petrolCarDetails();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+			case 3://Mercedes
+				System.out.println("Select The Car");
+				System.out.println("1. Mercedes E Class");
+				System.out.println("2. Mercedes C Class");
+				System.out.println("3. Mercedes GLE");
+				System.out.println("4. Mercedes S class");
+				System.out.println("**********************************************");
+				int k = sc.nextInt();
+				switch (k) {
+				case 1:
+					PetrolCar eClassCar = new PetrolCar("Mercedes", 7500000, 9.6, "Mercedes Benz E Class Expression E", 66, "In Line 4 Cylinder Petrol Engine", "Sedan");
+					eClassCar.petrolCarDetails();
+					break;
+				case 2:
+					PetrolCar cClaCar = new PetrolCar("Mercedes", 5700000, 9.6, "Mercedes Benz C Class Progressive C", 66, "In Line Petrol Engine", "Sedan");
+					cClaCar.petrolCarDetails();
+					break;
+				case 3:
+					PetrolCar gleCar = new PetrolCar("Mercedes", 9900000, 9.7, "Mercedes Benz GLE 450", 93, "V Type Engine", "SUV");
+					gleCar.petrolCarDetails();
+					break;
+				case 4:
+					PetrolCar sClassCar = new PetrolCar("Mercedes", 18700000, 12.8, "Mercedes Benz S Class", 65, "M256 Engine", "Sedan");
+					sClassCar.petrolCarDetails();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+			case 4://Renault
+				System.out.println("Select The Car");
+				System.out.println("1. Renault Kiger");
+				System.out.println("2. Renault Triber");
+				System.out.println("3. Renault Duster");
+				System.out.println("4. Renault Kwid");
+				System.out.println("**********************************************");
+				int l = sc.nextInt();
+				switch (l) {
+				case 1:
+					PetrolCar kigerCar = new PetrolCar("Renault", 810000, 18.24, "Renault Kiger RXZ", 40, "1.0L Energy Engine", "SUV");
+					kigerCar.petrolCarDetails();
+					break;
+				case 2:
+					PetrolCar triberCar = new PetrolCar("Renault", 790000, 18.2, "Renault Triber RX5", 40, "1.2L Petrol Engine", "Wagon");
+					triberCar.petrolCarDetails();
+					break;
+				case 3:
+					PetrolCar dusterCar = new PetrolCar("Renault", 1117000, 16.42, "Renault Duster RXS", 50, "1.3L Turbo Petrol Engine", "SUV");
+					dusterCar.petrolCarDetails();
+					break;
+				case 4:
+					PetrolCar kwidCar = new PetrolCar("Renault", 510000, 22, "Renault Kwid RXL", 28, "0.9L Turbo Petrol Engine", "HatchBack");
+					kwidCar.petrolCarDetails();
+					break;
+
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+			break;
+		case 2://diesel
+			System.out.println("Select The Brand");
+			System.out.println("1. Hyundai");
+			System.out.println("2. Honda");
+			System.out.println("3. Tata");
+		    System.out.println("**********************************************");
+			int m = sc.nextInt();
+			switch (m) {
+			case 1://Hyundai
+				System.out.println("Select The Car");
+				System.out.println("1. Hyundai Verna");
+				System.out.println("2. Hyundai Venue");
+				System.out.println("3. Hyundai Creta");
+				System.out.println("4. Hyundai i20");
+				System.out.println("**********************************************");
+				int n = sc.nextInt();
+				switch (n) {
+				case 1:
+					DieselCar vernaCar = new DieselCar("Hyundai", 1300000, 21.3, "Hyundai Verna S Plus", 45, "1.5L MPI Diesel Engine", "Sedan");
+					vernaCar.dieselCarDetails();
+					break;
+				case 2:
+					DieselCar venueCar = new DieselCar("Hyundai", 1400000, 18.15, "Hyundai Venue SX Opt", 45, "U2 CRDi Diesel Engine", "SUV");
+					venueCar.dieselCarDetails();
+					break;
+				case 3:
+					DieselCar cretaCar = new DieselCar("Hyundai", 1900000, 16.8, "Hyundai Creta SX Opt", 50, "1.5L CRDi Diesel Engine", "SUV");
+					cretaCar.dieselCarDetails();
+					break;
+				case 4:
+					DieselCar i20 = new DieselCar("Hyundai", 1030000, 20.28, "Hyundai i20 Sportz", 37, "1.5L U2 Engine", "HatchBack");
+					i20.dieselCarDetails();
+					break;
+
+				default:
+					break;
+				}
+				break;
+			case 2://Honda
+				System.out.println("Select The Car");
+				System.out.println("1. Honda Amaze");
+				System.out.println("2. Honda City V");
+				System.out.println("3. Honda WrV");
+				System.out.println("**********************************************");
+				int o = sc.nextInt();
+				switch (o) {
+				case 1:
+					DieselCar amazeCar = new DieselCar("Honda", 1318000, 24.7, "Honda City Amaze", 35, "1.5L D-TEc", "Sedan");
+					amazeCar.dieselCarDetails();
+					break;
+				case 2:
+					DieselCar cityCar = new DieselCar("Honda", 1717000, 24.1, "Honda City V", 40, "1.5L i-DTEC OOHL Diesel Engine", "Sedan");
+					cityCar.dieselCarDetails();
+					break;
+				case 3:
+					DieselCar wrvCar = new DieselCar("Honda", 1390000, 23.7, "Honda WrV VX Diesel", 49, "i-DTEC Diesel Engine", "SUV");
+					wrvCar.dieselCarDetails();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+			case 3:
+				System.out.println("Select The Car");
+				System.out.println("1. Tata Safari");
+				System.out.println("2. Tata Nexon");
+				System.out.println("3. Tata Altroz");
+				System.out.println("**********************************************");
+				int p = sc.nextInt();
+				switch (p) {
+				case 1:
+					DieselCar safariCar = new DieselCar("Tata", 1778000, 14.98, "Tata Safari", 50, "2.0L Turbocharged", "SUV");
+					safariCar.dieselCarDetails();
+					break;
+				case 2:
+					DieselCar nexonCar = new DieselCar("Tata", 1343000, 21.5, "Tata Nexon XZ Plus", 44, "1.5L Rovotorq Turbocharged", "SUV" );
+					nexonCar.dieselCarDetails();
+					break;
+				case 3:
+					DieselCar altrozCar = new DieselCar("Tata", 1100000, 25.11, "Tata Altroz XZ Plus", 37, "1.5L RovoTorq Engine", "SUV");
+					altrozCar.dieselCarDetails();
+					break;
+				default:
+					System.out.println("Invalid Input");
+					break;
+				}
+				break;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
+			break;
+		default:
+			System.out.println("Invalid Input");
+			break;
+		}
+		break;
+		
+		default:
+		System.out.println("Invaid Input");
+		break;
+		
+        }
+	        }  catch (InputMismatchException io) {
+		         System.out.println("Input MisMatch Exception Handled !");
+    	}
+    }
+
+}
